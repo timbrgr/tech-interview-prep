@@ -25,7 +25,8 @@ class TestStack(unittest.TestCase):
 
     def testPush(self):
         stack = self.get_test_stack()
-        self.assertEqual(6, stack.peek())
+        stack.push(7)
+        self.assertEqual(7, stack.peek())
 
     def testPop(self):
         stack = self.get_test_stack()
