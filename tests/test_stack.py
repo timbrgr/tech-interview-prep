@@ -31,3 +31,14 @@ class TestStack(unittest.TestCase):
     def testPop(self):
         stack = self.get_test_stack()
         self.assertEqual(6, stack.pop())
+
+    def testSize(self):
+        stack = self.get_test_stack()
+        self.assertEqual(2, stack.size())
+
+    def testIsEmpty(self):
+        empty_stack = Stack()
+        self.assertTrue(empty_stack.is_empty())
+
+        stack = self.get_test_stack()
+        self.assertFalse(stack.is_empty())
