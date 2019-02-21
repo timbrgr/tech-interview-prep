@@ -2,8 +2,7 @@ from typing import TypeVar
 
 
 class LinkedListNode:
-    """Implementation of a generic linked list node.
-    """
+    """Implementation of a generic linked list node."""
 
     T = TypeVar('T')
 

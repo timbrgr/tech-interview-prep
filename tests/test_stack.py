@@ -4,8 +4,7 @@ from datastructures.stack import Stack
 
 
 class TestStack(unittest.TestCase):
-    """Test cases for the stack.
-    """
+    """Test cases for the stack."""
 
     @staticmethod
     def get_test_stack():

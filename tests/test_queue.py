@@ -4,8 +4,7 @@ from datastructures.queue import Queue
 
 
 class TestQueue(unittest.TestCase):
-    """Test cases for the Queue.
-    """
+    """Test cases for the Queue."""
 
     @staticmethod
     def get_test_queue():
