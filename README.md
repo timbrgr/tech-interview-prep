@@ -11,3 +11,11 @@ Content:
 * LinkedList
 * Heaps
 * Graphs (Tree, Trie, Red-Black, AVL, ...)
+
+## Resources to check out
+* codeforces
+* leetcode
+* geeks for geeks
+* codejam
+* hackerrank
+* ...
