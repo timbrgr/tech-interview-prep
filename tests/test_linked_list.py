@@ -43,7 +43,7 @@ class TestSinglyLinkedList(unittest.TestCase):
         sll = self.get_test_sll()
         sll.remove(2)
 
-        for current_node, i in zip(sll.next_node_start_from_head(), [1,3]):
+        for current_node, i in zip(sll.next_node_start_from_head(), [1, 3]):
             self.assertEqual(current_node.data, i)
 
     def testRemoveNonExisting(self):
