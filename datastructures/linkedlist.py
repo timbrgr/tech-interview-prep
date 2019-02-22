@@ -1,4 +1,4 @@
-from typing import TypeVar
+from typing import TypeVar, Iterable
 
 from datastructures.linkedlistnode import SinglyLinkedListNode, DoublyLinkedListNode
 
@@ -37,12 +37,12 @@ class SinglyLinkedList(LinkedList):
     def remove(self, data: T) -> None:
         """Removes the node and updates pointers. Assumes unique values in data."""
         if self.head and self.head.data == data:
-            self.head = None
+            self.head = self.head.next
             return
 
         prev_node = self.head
-        for current_node in self.next_node():
-            if not current_node.next:  # reached tail
+        for current_node in self.next_node_start_from_head():
+            if not current_node.next and current_node.data == data:  # reached tail
                 self.tail = prev_node
                 prev_node.next = None
                 self.size -= 1
@@ -61,8 +61,8 @@ class SinglyLinkedList(LinkedList):
             current_node = current_node.next
         return current_node
 
-    def next_node(self):
-        """Returns the next node. Starts with head."""
+    def next_node_start_from_head(self) -> Iterable[SinglyLinkedListNode]:
+        """Returns the next node. Starts with head. Traverses the list forward."""
         yield self.head
         current_node = self.head
         while current_node.next:
@@ -74,7 +74,7 @@ class SinglyLinkedList(LinkedList):
         if not self.head:
             return 0
         else:
-            return sum(1 for node in self.next_node())
+            return sum(1 for node in self.next_node_start_from_head())
 
 
 class DoublyLinkedList(SinglyLinkedList):
@@ -87,7 +87,43 @@ class DoublyLinkedList(SinglyLinkedList):
         super().__init__()
 
     def insert(self, data: T) -> None:
-        raise NotImplementedError()
+        """Adds an element to the end of the list."""
+        if not self.head:
+            new_node = DoublyLinkedListNode(data, prev=None)
+            self.head = new_node
+            self.tail = new_node
+            self.size += 1
+            return
+
+        new_node = DoublyLinkedListNode(data, prev=self.tail)
+        self.tail.next = new_node
+        self.tail = new_node
+        self.size += 1
 
     def remove(self, data: T) -> None:
-        raise NotImplementedError()
+        """Removes the node and updates pointers. Assumes unique values in data."""
+        if self.head and self.head.data == data:
+            self.head = self.head.next
+            self.head.prev = None
+            return
+
+        for current_node in self.next_node_start_from_head():
+            if not current_node.next and current_node.data == data:  # reached tail
+                self.tail = current_node.prev
+                current_node.prev = None
+                self.size -= 1
+                return
+
+            if current_node.data == data:
+                current_node.prev.next = current_node.next
+                current_node.next.prev = current_node.prev
+                self.size -= 1
+                return
+
+    def previous_node_start_from_tail(self) -> Iterable[DoublyLinkedListNode]:
+        """Returns the previous node. Starts with tail. Traverses the list backward."""
+        yield self.tail
+        current_node = self.tail
+        while current_node.prev:
+            current_node = current_node.prev
+            yield current_node

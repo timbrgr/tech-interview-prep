@@ -1,4 +1,4 @@
-from typing import TypeVar, Generic
+from typing import TypeVar, Generic, Union
 
 T = TypeVar('T')
 
@@ -28,6 +28,6 @@ class DoublyLinkedListNode(SinglyLinkedListNode):
     Each node has a pointer to its previous as well as next node.
     """
 
-    def __init__(self, data: T, prev: LinkedListNode):
+    def __init__(self, data: T, prev: Union[LinkedListNode, None]):
         super().__init__(data)
         self.prev = prev
