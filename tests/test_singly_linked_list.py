@@ -31,13 +31,17 @@ class TestSinglyLinkedList(unittest.TestCase):
 
     def testTail(self):
         sll = self.get_test_sll()
-        actual = sll.get_tail()
+        actual = sll.tail
+        self.assertEqual(actual.data, 3)
+
+    def testTail_O_n(self):
+        sll = self.get_test_sll()
+        actual = sll.get_tail_O_n()
         self.assertEqual(actual.data, 3)
 
     def testRemove(self):
         sll = self.get_test_sll()
         sll.remove(2)
-        self.assertEqual(sll.get_tail().data, 3)
         self.assertEqual(sll.size, 2)
 
 

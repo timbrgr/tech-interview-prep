@@ -9,6 +9,7 @@ class LinkedList:
 
     def __init__(self):
         self.head = None
+        self.tail = None
         self.size = 0
 
 
@@ -25,12 +26,12 @@ class SinglyLinkedList(LinkedList):
         new_node = SinglyLinkedListNode(data)
         if not self.head:  # list is empty, head will be new node
             self.head = new_node
+            self.tail = self.head
             self.size += 1
             return
 
-        # traverse the list from head to tail, add new element to tail
-        tail = self.get_tail()
-        tail.next = new_node
+        self.tail.next = new_node
+        self.tail = new_node
         self.size += 1
 
     def remove(self, data: T) -> None:
@@ -42,6 +43,7 @@ class SinglyLinkedList(LinkedList):
         prev_node = self.head
         for current_node in self.next_node():
             if not current_node.next:  # reached tail
+                self.tail = prev_node
                 prev_node.next = None
                 self.size -= 1
                 return
@@ -52,7 +54,7 @@ class SinglyLinkedList(LinkedList):
                 return
             prev_node = current_node
 
-    def get_tail(self) -> SinglyLinkedListNode:
+    def get_tail_O_n(self) -> SinglyLinkedListNode:
         """Returns the tail (last element in list) by traversing through it. O(n)."""
         current_node = self.head
         while current_node.next:
@@ -84,3 +86,8 @@ class DoublyLinkedList(SinglyLinkedList):
     def __init__(self):
         super().__init__()
 
+    def insert(self, data: T) -> None:
+        raise NotImplementedError()
+
+    def remove(self, data: T) -> None:
+        raise NotImplementedError()
