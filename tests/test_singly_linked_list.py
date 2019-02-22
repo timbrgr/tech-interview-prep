@@ -19,6 +19,12 @@ class TestSinglyLinkedList(unittest.TestCase):
         actual = sll.get_tail()
         self.assertEqual(actual.data, 3)
 
+    def testRemove(self):
+        sll = self.get_test_sll()
+        sll.remove(2)
+        self.assertEqual(sll.get_tail().data, 3)
+        self.assertEqual(sll.size(), 2)
+
     def testSize(self):
         sll = self.get_test_sll()
         actual = sll.size()

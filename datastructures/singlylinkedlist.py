@@ -31,7 +31,24 @@ class SinglyLinkedList:
             current_node = current_node.next
         return current_node
 
-    def remove(self) -> None:
+    def remove(self, data: T) -> None:
+        """Removes the node and updates pointers. Assumes unique values in data."""
+        if self.head and self.head.data == data:
+            self.head = None
+            return
+
+        prev_node = self.head
+        for current_node in self.next_node():
+            if not current_node.next:  # reached tail
+                prev_node.next = None
+                return
+
+            if current_node.data == data:
+                prev_node.next = current_node.next
+                return
+            prev_node = current_node
+
+
         # TODO
         raise NotImplementedError
 
