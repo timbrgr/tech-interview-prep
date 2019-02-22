@@ -1,6 +1,5 @@
 import unittest
 
-from datastructures.linkedlistnode import LinkedListNode
 from datastructures.singlylinkedlist import SinglyLinkedList
 
 
@@ -9,25 +8,23 @@ class TestSinglyLinkedList(unittest.TestCase):
     @staticmethod
     def get_test_sll() -> SinglyLinkedList:
         sll = SinglyLinkedList()
-        sll.insert(LinkedListNode(1))
-        sll.insert(LinkedListNode(2))
+        sll.insert(1)
+        sll.insert(2)
+        sll.insert(3)
 
         return sll
 
-    def testAdd(self):
-        sll = SinglyLinkedList()
-        sll.insert(LinkedListNode(1))
-        sll.insert(LinkedListNode(2))
-        raise NotImplementedError()
-
     def testTail(self):
         sll = self.get_test_sll()
-        actual = sll.get_tail().data
-        self.assertEqual(actual, 2)
+        actual = sll.get_tail()
+        self.assertEqual(actual.data, 3)
 
     def testSize(self):
         sll = self.get_test_sll()
         actual = sll.size()
-        self.assertEqual(actual, 2)
+        self.assertEqual(actual, 3)
 
-
+    def testSizeEmtpy(self):
+        empty_sll = SinglyLinkedList()
+        actual = 0
+        self.assertEqual(actual, empty_sll.size())
