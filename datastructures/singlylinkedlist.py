@@ -48,10 +48,6 @@ class SinglyLinkedList:
                 return
             prev_node = current_node
 
-
-        # TODO
-        raise NotImplementedError
-
     def next_node(self):
         """Returns the next node. Starts with head."""
         yield self.head
