@@ -20,7 +20,7 @@ class Heap(ABC):
 
     @staticmethod
     def get_parent_idx(child_idx: int) -> int:
-        return int((child_idx - 2) / 2)
+        return int((child_idx - 1) / 2)
 
     def has_left_child(self, idx: int) -> bool:
         return self.get_left_child_idx(idx) < self.size
