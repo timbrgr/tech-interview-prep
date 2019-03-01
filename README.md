@@ -5,6 +5,7 @@ This largely focusses on implementing solutions for "Cracking the Coding Intervi
 Content:
 * Stacks
 * Queues
+* LinkedLists (Singly, Doubly with compositum pattern (has pointer to tail to avoid O(n) to reach tail)
 
 ## Todo
 * HashSet
