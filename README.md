@@ -6,11 +6,11 @@ Content:
 * Stacks
 * Queues
 * LinkedLists (Singly, Doubly with compositum pattern (has pointer to tail to avoid O(n) to reach tail)
+* Heaps
 
 ## Todo
 * HashSet
 * LinkedList
-* Heaps
 * Graphs (Tree, Trie, Red-Black, AVL, ...)
 
 ## Resources to check out
